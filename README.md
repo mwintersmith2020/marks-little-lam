@@ -23,14 +23,14 @@ There are many back-office functions which parasitically tax productivity in any
 
 And while investors have poured multi-billions into GPU fabrication, model training and related activities, the opportunity to refactor the back-office using AI has been largely overlooked -- and frankly starved of investment.
 
-This article is not going to delve into the economics driving this -- perhaps that will be a future discussion.  But SaaS applications are bottom-line driven e.g. "How much can we reduce headcount by using this SaaS app?"  Whereas, GenAI solutions (which LAM is) promise to be top-line driven -- i.e. "What new revenue and value can be unlocked once employees have been freed from the tyranny of self-service SaaS apps"?
+This article is not going to delve into the economics driving this -- perhaps that will be a future discussion.  But SaaS applications are bottom-line driven e.g. *"How much can we reduce headcount by using this SaaS app?"*  Whereas, GenAI solutions (which LAM is) aspire to be top-line driven -- i.e. *"What new revenue and value can be unlocked once employees have been freed from the tyranny of self-service SaaS apps"?*
 
-LAM is the tool to do this.  Unfortunately the necessary scaffolding to fully implement **_LAM does not exist yet_**.  The purpose of this article (and the associated toolkit code) is to jump-start this initiative.
+LAM is the tool to do this.  Unfortunately the required scaffolding to fully implement LAM **_does not exist yet_**.  The purpose of this article (and the associated toolkit code) is to jump-start this initiative.
 
 
 ### NOT A TECHNOLOGY PROBLEM
 
-The conceptual building blocks required to build a LAM  currently exists in rough draft form through a myriad of white papers and sample code -- and possibly a small number of commercial tools.  We are confident that a LAM can be assembled from an assortment of existing tools, models and libraries.  So implementation is not technology constrained.  Rather, the biggest impediments are these:
+The conceptual building blocks required to build a LAM  currently exist in rough draft form through a myriad of white papers and sample code -- and possibly a small number of commercial tools.  We are confident that a LAM can be assembled from this assortment of existing tools, models and libraries.  So implementation is not technology constrained.  Rather, the biggest impediments are these:
 
 1.  **WHAT IS A LAM?**  Apart from Rabbit, no one actually knows what a LAM is -- thus a formal definition and software specification is needed.
 2.  **HOW DO YOU TEST IT?**  If someone claims to have built a LAM, how would you validate that claim?  Thus a verification methodology to test compliance with the LAM-spec is also required.
@@ -55,9 +55,9 @@ Typically RPA tools are "rules-based" and/or "scripted", meaning they follow a p
 
 In practice, a LAM may perform the exact same actions as an RPA -- but differs in this one important aspect: when confronted with an unfamiliar environment, it will use ANN-type tools to infer the next action(s) to take.
 
-
--------------------------
-LARGE ACTION MODEL: SOFTWARE SPECIFICATION
+---
+**LARGE ACTION MODEL: SOFTWARE SPECIFICATION**
+---
 
 What follows is a software requirements specification for LAMs.
 
@@ -173,11 +173,8 @@ What follows is a software requirements specification for LAMs.
 ##### 5.  Episodic Replay
 
 	5.1.  A LAM shall be able to replay workflow episodes stored in the replay buffer.
-
 	5.2.  During replay the LAM must be able to fully mimic human GUI gestures and interactions using only mouse and keyboard inputs.
-
 	5.3.  The LAM shall be able to replay the workflow at the same timing cadence logged during training (if so desired)
-
 	5.4. During replay the LAM shall not have access (programmatic or otherwise) to the DOM.
 
 
@@ -198,9 +195,7 @@ What follows is a software requirements specification for LAMs.
 		e.g. State S(0) = "Login Page"
 
 	6.2.  Workflow replay shall consist of sequentially executing each workflow time step. 
-
 	6.3.  For each workflow state S(t) LAM shall execute an Action -> Identification -> Evaluation sequence.
-
 	6.4.  The Action step fetches the next action from the replay buffer, e.g. "Click the 'Login' button"
 
 		6.4.1.  Performing Action(t) in State S(t) should cause a transition to State S(t+1)
